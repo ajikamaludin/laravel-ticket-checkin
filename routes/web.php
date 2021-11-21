@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontPageController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,12 @@ use App\Http\Controllers\FrontPageController;
 Route::get('/', [FrontPageController::class, 'index'])->name('frontpage.index');
 Route::post('/', [FrontPageController::class, 'store'])->name('frontpage.store');
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/login', [AuthController::class, 'formLogin'])->name('auth.index')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
 
-Route::get('/dashboard', function () {
+// Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+Route::get('/home', function () {
     return view('admin.index');
-});
+})->name('dashboard');
