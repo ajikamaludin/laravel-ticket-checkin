@@ -145,9 +145,9 @@
     
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-            <form method="POST" action="{{ route('auth.logout') }}">
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <a class="nav-link px-3" href="{{ route('auth.logout') }}" 
+                <a class="nav-link px-3" href="{{ route('logout') }}" 
                 onclick="event.preventDefault();this.closest('form').submit();">Sign out</a>
             </form>
         </div>

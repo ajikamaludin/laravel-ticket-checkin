@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontPageController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardContoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,10 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [FrontPageController::class, 'index'])->name('frontpage.index');
 Route::post('/', [FrontPageController::class, 'store'])->name('frontpage.store');
 
-Route::get('/login', [AuthController::class, 'formLogin'])->name('auth.index')->middleware('guest');
-Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/login', [AuthController::class, 'formLogin'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->name('login.store')->middleware('guest');
 
 // Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/home', function () {
-    return view('admin.index');
-})->name('dashboard');
+Route::get('/dashboard', [DashboardContoller::class, 'index'])->name('dashboard')->middleware('auth');

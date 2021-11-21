@@ -79,7 +79,7 @@
                 {{ session('message') }}
             </div>
         @endif
-        <form method="POST" action="{{ route('auth.login') }}">
+        <form method="POST" action="{{ route('login') }}">
             @csrf
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
                 <div class="form-floating">
