@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontpage.index');
-});
+// Route::get('/', '\FrontPageController@index');
+
+Route::get('/', [FrontPageController::class, 'index'])->name('frontpage.index');
+Route::post('/', [FrontPageController::class, 'store'])->name('frontpage.store');
 
 Route::get('/login', function () {
     return view('auth.login');
