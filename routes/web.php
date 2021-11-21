@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontPageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardContoller;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,6 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.store')->mi
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardContoller::class, 'index'])->name('dashboard')->middleware('auth');
+
+// resources
+Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index')->middleware('auth');
