@@ -71,7 +71,7 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
-        $ticket = Ticket::find($id);
+        $ticket = Ticket::findOrFail($id);
 
         return view('tickets.edit', ['ticket' => $ticket]);
     }
@@ -91,7 +91,7 @@ class TicketController extends Controller
             'phone' => 'required',
         ]);
 
-        $ticket = Ticket::find($id);
+        $ticket = Ticket::findOrFail($id);
 
         $ticket->update([
             'name' => $request->input('name'),
