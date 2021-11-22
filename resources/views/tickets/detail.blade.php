@@ -16,7 +16,7 @@
                     <div class="mb-3">
                         <p>Ticket ID: {{ $ticket->ticket_id }}</p>
                         <p>Nama: {{ $ticket->name }}</p>
-                        <p>Sudah Check In: {{ $ticket->is_checkin == 0 ? 'Belum Check' : 'Sudah Check' }}</p>
+                        <p>Check In: {{ $ticket->is_checkin == 0 ? 'Belum Check' : 'Sudah Check' }}</p>
                     </div>
             </div>
         </div>

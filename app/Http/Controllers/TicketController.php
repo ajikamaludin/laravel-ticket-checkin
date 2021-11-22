@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TicketController extends Controller
 {
@@ -46,7 +47,7 @@ class TicketController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'ticket_id' => 'tiket1',
+            'ticket_id' => Str::random(6),
         ]);
 
         return redirect()->route('tickets.index')->with('message', 'tiket berhasil di simpan');

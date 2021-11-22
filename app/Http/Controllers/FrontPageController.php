@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,12 @@ class FrontPageController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required',
+        ]);
+        
         // Method 1
         // $ticket = new Ticket;
         // $ticket->name = $request->name;
@@ -27,7 +34,7 @@ class FrontPageController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'ticket_id' => 'tiket1',
+            'ticket_id' => Str::random(6),
         ]);
 
         return redirect()->route('frontpage.index')->with('message', 'tiket berhasil di order #'.$ticket->ticket_id);
