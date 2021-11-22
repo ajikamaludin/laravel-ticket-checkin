@@ -34,5 +34,5 @@ Route::get('/dashboard', [DashboardContoller::class, 'index'])->name('dashboard'
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index')->middleware('auth');
 Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create')->middleware('auth');
 Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store')->middleware('auth');
-Route::get('/tickets/{id}', [TicketController::class, 'edit'])->name('tickets.edit')->middleware('auth');
-Route::put('/tickets/{id}', [TicketController::class, 'update'])->name('tickets.update')->middleware('auth');
+Route::get('/tickets/{ticket}', [TicketController::class, 'edit'])->name('tickets.edit')->middleware('auth');
+Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update')->middleware('auth');

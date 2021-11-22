@@ -31,7 +31,7 @@
                             <td>{{ $ticket->email }}</td>
                             <td>{{ $ticket->phone }}</td>
                             <td>
-                                <a href="{{ route('tickets.edit', ['id' => $ticket->id]) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('tickets.edit', $ticket) }}" class="btn btn-primary">Edit</a>
                                 <div class="btn btn-danger">Delete</div>
                             </td>
                         </tr>

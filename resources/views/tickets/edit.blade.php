@@ -16,8 +16,9 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('tickets.store') }}" method="POST">
+                <form action="{{ route('tickets.update', $ticket) }}" method="POST">
                     @csrf
+                    @method("PUT")
                     <div class="mb-3">
                         <label class="form-label">Nama</label>
                         <input type="text" name="name" class="form-control" placeholder="nama" value="{{ $ticket->name }}">

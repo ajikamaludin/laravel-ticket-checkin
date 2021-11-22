@@ -69,10 +69,8 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Ticket $ticket)
     {
-        $ticket = Ticket::findOrFail($id);
-
         return view('tickets.edit', ['ticket' => $ticket]);
     }
 
@@ -83,15 +81,13 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Ticket $ticket)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'phone' => 'required',
         ]);
-
-        $ticket = Ticket::findOrFail($id);
 
         $ticket->update([
             'name' => $request->input('name'),
