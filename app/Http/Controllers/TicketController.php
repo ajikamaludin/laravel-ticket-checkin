@@ -71,7 +71,9 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = Ticket::find($id);
+
+        return view('tickets.edit', ['ticket' => $ticket]);
     }
 
     /**
@@ -83,7 +85,22 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required',
+        ]);
+
+        $ticket = Ticket::find($id);
+
+        $ticket->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'ticket_id' => 'tiket1'
+        ]);
+
+        return redirect()->route('tickets.index')->with('message', 'tiket berhasil di simpan');
     }
 
     /**
