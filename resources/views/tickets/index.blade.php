@@ -32,7 +32,12 @@
                             <td>{{ $ticket->phone }}</td>
                             <td>
                                 <a href="{{ route('tickets.edit', $ticket) }}" class="btn btn-primary">Edit</a>
-                                <div class="btn btn-danger">Delete</div>
+                                <form method="POST" action="{{route('tickets.destroy', $ticket) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a class="btn btn-danger" href="{{route('tickets.destroy', $ticket) }}" 
+                                        onclick="event.preventDefault(); if(confirm('yakin hapus ?')) this.closest('form').submit();">Delete</a>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
