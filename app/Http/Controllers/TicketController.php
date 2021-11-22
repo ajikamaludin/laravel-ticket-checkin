@@ -93,7 +93,6 @@ class TicketController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'ticket_id' => 'tiket1'
         ]);
 
         return redirect()->route('tickets.index')->with('message', 'tiket berhasil di simpan');
@@ -109,5 +108,24 @@ class TicketController extends Controller
     {
         $ticket->delete();
         return redirect()->route('tickets.index')->with('message', 'tiket berhasil di hapus');
+    }
+
+    public function search()
+    {
+        return view('tickets.check');
+    }
+
+    public function check(Request $request)
+    {
+        $ticket = Ticket::where('ticket_id', $request->ticket_id)->first();
+
+        if ($ticket == null) {
+            return redirect()->back()->with('message', 'tiket tidak ditemukan');
+        }
+
+        $ticket->is_checkin = 1;
+        $ticket->save();
+
+        return view('tickets.detail', ['ticket' => $ticket]);
     }
 }

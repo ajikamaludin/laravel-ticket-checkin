@@ -30,10 +30,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardContoller::class, 'index'])->name('dashboard')->middleware('auth');
 
+//
+Route::get('/tickets/check', [TicketController::class, 'search'])->name('tickets.search');
+Route::post('/tickets/check', [TicketController::class, 'check'])->name('tickets.check');
+
 // resources
-Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index')->middleware('auth');
-Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create')->middleware('auth');
-Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store')->middleware('auth');
-Route::get('/tickets/{ticket}', [TicketController::class, 'edit'])->name('tickets.edit')->middleware('auth');
-Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update')->middleware('auth');
-Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy')->middleware('auth');
+// Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index')->middleware('auth');
+// Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create')->middleware('auth');
+// Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store')->middleware('auth');
+// Route::get('/tickets/{ticket}', [TicketController::class, 'edit'])->name('tickets.edit')->middleware('auth');
+// Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update')->middleware('auth');
+// Route::delete('/tickets/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy')->middleware('auth');
+
+Route::resource('tickets', TicketController::class);

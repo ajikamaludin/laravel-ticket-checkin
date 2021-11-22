@@ -172,7 +172,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link active" aria-current="page" href="{{ route('tickets.search') }}">
                             <span data-feather="home"></span>
                             Check Tiket
                         </a>
