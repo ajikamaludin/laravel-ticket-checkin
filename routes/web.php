@@ -32,3 +32,5 @@ Route::get('/dashboard', [DashboardContoller::class, 'index'])->name('dashboard'
 
 // resources
 Route::get('/tickets', [TicketController::class, 'index'])->name('tickets.index')->middleware('auth');
+Route::get('/tickets/create', [TicketController::class, 'create'])->name('tickets.create')->middleware('auth');
+Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store')->middleware('auth');

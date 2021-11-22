@@ -25,7 +25,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        return view('tickets.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ticket = Ticket::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'ticket_id' => 'tiket1',
+        ]);
+
+        return redirect()->route('tickets.index')->with('message', 'tiket berhasil di simpan');
     }
 
     /**
