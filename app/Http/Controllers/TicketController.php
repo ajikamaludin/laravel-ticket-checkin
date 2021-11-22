@@ -117,10 +117,22 @@ class TicketController extends Controller
 
     public function check(Request $request)
     {
+        // Option 1
+        // $ticket = Ticket::where('ticket_id', $request->ticket_id)->where('is_checkin', 0)->first();
+
+        // if ($ticket == null) {
+        //     return redirect()->back()->with('message', 'tiket tidak ditemukan');
+        // }
+
+        // Option 2
         $ticket = Ticket::where('ticket_id', $request->ticket_id)->first();
 
         if ($ticket == null) {
             return redirect()->back()->with('message', 'tiket tidak ditemukan');
+        }
+
+        if ($ticket->is_checkin == 1) {
+            return redirect()->back()->with('message', 'tiket sudah check in');
         }
 
         $ticket->is_checkin = 1;
