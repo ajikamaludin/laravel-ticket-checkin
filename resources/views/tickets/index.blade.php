@@ -31,10 +31,11 @@
                             <td>{{ $ticket->email }}</td>
                             <td>{{ $ticket->phone }}</td>
                             <td>
-                                <a href="{{ route('tickets.edit', $ticket) }}" class="btn btn-primary">Edit</a>
+                                
                                 <form method="POST" action="{{route('tickets.destroy', $ticket) }}">
                                     @csrf
                                     @method('DELETE')
+                                    <a href="{{ route('tickets.edit', $ticket) }}" class="btn btn-primary">Edit</a>
                                     <a class="btn btn-danger" href="{{route('tickets.destroy', $ticket) }}" 
                                         onclick="event.preventDefault(); if(confirm('yakin hapus ?')) this.closest('form').submit();">Delete</a>
                                 </form>
